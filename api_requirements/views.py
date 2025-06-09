@@ -11,4 +11,5 @@ from django.shortcuts import get_object_or_404
 def get_requirements(request):
     id = request.GET.get('id')
     if not id:id = 1
-    return Response(RequirementsSerializer(get_object_or_404(RequirementsModel, pk=id)).data, status=200)
+    #return Response(RequirementsSerializer(get_object_or_404(RequirementsModel, pk=id)).data, status=200)
+    return Response(RequirementsSerializer(RequirementsModel.objects.all(), many=True).data)
