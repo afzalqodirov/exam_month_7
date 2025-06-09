@@ -11,12 +11,13 @@ schema = get_schema_view(openapi.Info('Bulletin of TUIT api', 'v01', 'The api fo
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 # my single imports
-from api_requirements.views import get_requirements
+from api_requirements.views import get_requirements, temp
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('token/', TokenObtainPairView.as_view()),
     path('token/refresh/', TokenRefreshView.as_view()),
     path('api/requirements/', get_requirements),
+    path('api/requirements/create/', temp),
     path('', schema.with_ui('swagger')),
 ]
