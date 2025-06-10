@@ -1,23 +1,30 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 # swagger imports and settings
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
-schema = get_schema_view(openapi.Info('Bulletin of TUIT api', 'v01', 'The api for figma of Bulletin of TUIT', contact=openapi.Contact('Afzal', 'https://t.me/Afzal006', 'htpafzal@gmail.com')))
+schema = get_schema_view(openapi.Info('Bulletin of TUIT api', 'v01', 'The api for figma of <a href="https://www.figma.com/proto/QuEsUOqjoXJCJ8d4NBPlPs/TUIT-Bullet?node-id=1-2&scaling=scale-down-width&content-scaling=fixed">Bulletin of TUIT</a>', contact=openapi.Contact('Afzal', 'https://t.me/Afzal006', 'htpafzal@gmail.com')))
 
 # jwt authentication
 # access and refresh token views
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
-# my single imports
+# my imports
 from api_requirements.views import get_requirements, temp
+from faq.views import show_faq, tempp
+from accounts.views import accounts_register
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('token/', TokenObtainPairView.as_view()),
     path('token/refresh/', TokenRefreshView.as_view()),
+    path('api/accounts/', include('accounts.urls')),
     path('api/requirements/', get_requirements),
-    path('api/requirements/create/', temp),
+    path('api/faq/', show_faq),
     path('', schema.with_ui('swagger')),
+
+    # temporary! to add some requirements and faq
+    path('api/faq/create/', tempp),
+    path('api/requirements/create/', temp),
 ]

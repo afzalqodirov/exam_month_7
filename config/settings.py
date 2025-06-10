@@ -33,6 +33,8 @@ INSTALLED_APPS = [
     'corsheaders',
     # my apps
     'api_requirements',
+    'faq',
+    'accounts',
 ]
 
 # CORS SETTINGS -------
@@ -137,6 +139,7 @@ if not DEBUG:STATIC_ROOT = BASE_DIR / 'static_files'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-SWAGGER_SETTINGS = {'SECURITY_DEFINITIONS':{'BEARER':{'type':'apiKey','name':'Authorization','in':'header'}}}
+SWAGGER_SETTINGS = {'SECURITY_DEFINITIONS':{'BEARER':{'type':'apiKey','name':'Authorization','in':'header'}}, 'LOGIN_URL':'admin/'}
 REST_FRAMEWORK = {'DEFAULT_AUTHENTICATION_CLASSES':('rest_framework_simplejwt.authentication.JWTAuthentication',), 'DEFAULT_PAGINATION_CLASS':'rest_framework.pagination.PageNumberPagination', 'PAGE_SIZE':3}
 SIMPLE_JWT = {'ACCESS_TOKEN_LIFETIME':timedelta(hours=2), 'REFRESH_TOKEN_LIFETIME':timedelta(days=1)}
+AUTH_USER_MODEL = 'accounts.CustomUser'
