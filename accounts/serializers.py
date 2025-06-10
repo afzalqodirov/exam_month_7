@@ -1,4 +1,6 @@
-from rest_framework.serializers import ModelSerializer
+from rest_framework.serializers import ModelSerializer, CharField, Serializer
+
+# my imports
 from .models import CustomUser
 
 class CustomUserSerializer(ModelSerializer):
@@ -40,3 +42,11 @@ class CustomUserSerializer(ModelSerializer):
         fields = super().get_fields()
         fields.pop('password')
         return fields
+
+class PasswordChangeSerializer(Serializer):
+    old_password = CharField(max_length=128)
+    new_password = CharField(max_length=128)
+    confirm_password = CharField(max_length=128)
+    class Meta:
+        fields = '__all__'
+ 

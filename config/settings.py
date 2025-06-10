@@ -19,7 +19,7 @@ ALLOWED_HOSTS = ['*']
 
 # Application definition
 
-JAZZMIN_SETTINGS = {"user_avatar":"photo"} 
+JAZZMIN_SETTINGS = {"user_avatar":"photo", "default_icon_children": "media/profile pictures/pic.png"} 
 # for testing localhost added
 if DEBUG:JAZZMIN_SETTINGS["usermenu_links"] = [{"name":"the site", "url":"http://127.0.0.1:8000"}]
 

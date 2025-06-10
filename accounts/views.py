@@ -2,7 +2,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from drf_yasg.utils import swagger_auto_schema
 
-from .serializers import CustomUserSerializer
+from .serializers import CustomUserSerializer, PasswordChangeSerializer
 from .models import CustomUser
 
 @swagger_auto_schema(method='POST', request_body=CustomUserSerializer)
@@ -20,4 +20,15 @@ def accounts_show_profile(request):
     serializer = CustomUserSerializer
     user = request.user
     if user.is_authenticated:return Response(serializer(user).data)
+    return Response({'message':'you are not logged in!'})
+
+@swagger_auto_schema(method='POST', request_body=PasswordChangeSerializer)
+@api_view(['POST'])
+def accounts_password_change(request):
+    user = request.user
+    if user.is_authenticated:
+        if not user.check_password(request.data.get('old_password')):return Response({'message':'The password is incorrect'})
+        user.set_password(request.data.get('new_password'))
+        user.save()
+        return Response({'message':'Successfully changed!'})
     return Response({'message':'you are not logged in!'})
