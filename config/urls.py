@@ -4,7 +4,7 @@ from django.urls import path, include
 # swagger imports and settings
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
-schema = get_schema_view(openapi.Info('Bulletin of TUIT api', 'v01', 'The api for figma of <a href="https://www.figma.com/proto/QuEsUOqjoXJCJ8d4NBPlPs/TUIT-Bullet?node-id=1-2&scaling=scale-down-width&content-scaling=fixed">Bulletin of TUIT</a>', contact=openapi.Contact('Afzal', 'https://t.me/Afzal006', 'htpafzal@gmail.com')))
+schema = get_schema_view(openapi.Info('Bulletin of TUIT api', 'v01', 'The api for figma of <a target="_blank" href="https://www.figma.com/proto/QuEsUOqjoXJCJ8d4NBPlPs/TUIT-Bullet?node-id=1-2&scaling=scale-down-width&content-scaling=fixed">Bulletin of TUIT</a>', contact=openapi.Contact('Afzal', 'https://t.me/Afzal006', 'htpafzal@gmail.com')))
 
 # jwt authentication
 # access and refresh token views

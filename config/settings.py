@@ -19,7 +19,13 @@ ALLOWED_HOSTS = ['*']
 
 # Application definition
 
+JAZZMIN_SETTINGS = {"user_avatar":"photo"} 
+# for testing localhost added
+if DEBUG:JAZZMIN_SETTINGS["usermenu_links"] = [{"name":"the site", "url":"http://127.0.0.1:8000"}]
+
 INSTALLED_APPS = [
+    'jazzmin',
+    # django admin interface with jazzmin
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
