@@ -5,7 +5,7 @@ from drf_yasg.utils import swagger_auto_schema
 from .serializers import CustomUserSerializer, PasswordChangeSerializer
 from .models import CustomUser
 
-@swagger_auto_schema(method='POST', request_body=CustomUserSerializer)
+@swagger_auto_schema(method='POST', request_body=CustomUserSerializer, operation_id='Register', operation_summary='Register new user if not logged in or don\'t have an account')
 @api_view(['POST'])
 def accounts_register(request):
     if request.user.is_authenticated:return Response({'message':'you\'ve already logged in!'})
@@ -15,6 +15,7 @@ def accounts_register(request):
     if data.is_valid():data.save();return Response(data.data)
     return Response(data.errors)
 
+@swagger_auto_schema(method='GET', operation_id='Show profile')
 @api_view()
 def accounts_show_profile(request):
     serializer = CustomUserSerializer
@@ -22,7 +23,7 @@ def accounts_show_profile(request):
     if user.is_authenticated:return Response(serializer(user).data)
     return Response({'message':'you are not logged in!'})
 
-@swagger_auto_schema(method='POST', request_body=PasswordChangeSerializer)
+@swagger_auto_schema(method='POST', request_body=PasswordChangeSerializer, operation_id='Change password', operation_summary='Used to change password')
 @api_view(['POST'])
 def accounts_password_change(request):
     user = request.user

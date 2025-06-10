@@ -19,7 +19,7 @@ ALLOWED_HOSTS = ['*']
 
 # Application definition
 
-JAZZMIN_SETTINGS = {"user_avatar":"photo", "default_icon_children": "media/profile pictures/pic.png"} 
+JAZZMIN_SETTINGS = {"user_avatar":"photo"} 
 # for testing localhost added
 if DEBUG:JAZZMIN_SETTINGS["usermenu_links"] = [{"name":"the site", "url":"http://127.0.0.1:8000"}]
 
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'faq',
     'accounts',
     'api_messages',
+    'api_papers',
 ]
 
 # CORS SETTINGS -------

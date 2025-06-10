@@ -5,7 +5,7 @@ from drf_yasg.utils import swagger_auto_schema
 # my imports
 from .serializers import MessagesSerializer
 
-@swagger_auto_schema(method='POST', request_body=MessagesSerializer)
+@swagger_auto_schema(method='POST', request_body=MessagesSerializer, operation_id='Messages', operation_summary='send message')
 @api_view(['POST'])
 def send_message(request):
     if not request.user.is_authenticated:return Response({'message':'You are not logged in!'})
