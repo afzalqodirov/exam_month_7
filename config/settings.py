@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'api_requirements',
     'faq',
     'accounts',
+    'api_messages',
 ]
 
 # CORS SETTINGS -------
@@ -133,6 +134,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 if not DEBUG:STATIC_ROOT = BASE_DIR / 'static_files'
 
 # Default primary key field type

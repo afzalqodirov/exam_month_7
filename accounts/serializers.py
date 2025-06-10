@@ -12,7 +12,8 @@ class CustomUserSerializer(ModelSerializer):
                 'birth_date', 
                 'scientific_degree', 
                 'organization', 
-                'extra_info'
+                'extra_info',
+                'photo',
                 ]
         model = CustomUser
         extra_kwargs = {
@@ -30,7 +31,8 @@ class CustomUserSerializer(ModelSerializer):
                 birth_date = validated_data.get('birth_date'),
                 scientific_degree = validated_data.get('scientific_degree'),
                 organization = validated_data.get('organization'),
-                extra_info = validated_data.get('extra_info'))
+                extra_info = validated_data.get('extra_info'),
+                photo = validated_data.get('photo'))
         return user
 
     #experimental! don't touch it

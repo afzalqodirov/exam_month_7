@@ -11,20 +11,29 @@ schema = get_schema_view(openapi.Info('Bulletin of TUIT api', 'v01', 'The api fo
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 # my imports
-from api_requirements.views import get_requirements, temp
-from faq.views import show_faq, tempp
+from api_requirements.views import get_requirements
+from faq.views import show_faq
 from accounts.views import accounts_register
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('token/', TokenObtainPairView.as_view()),
     path('token/refresh/', TokenRefreshView.as_view()),
-    path('api/accounts/', include('accounts.urls')),
+    path('accounts/', include('accounts.urls')),
     path('api/requirements/', get_requirements),
     path('api/faq/', show_faq),
     path('', schema.with_ui('swagger')),
+    ]
 
-    # temporary! to add some requirements and faq
+
+# temporary! to add some requirements and faq
+from api_requirements.views import temp
+from faq.views import show_faq, tempp
+urlpatterns += [
     path('api/faq/create/', tempp),
     path('api/requirements/create/', temp),
 ]
+from django.conf import settings
+from django.conf.urls.static import static
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
