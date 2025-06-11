@@ -21,6 +21,7 @@ ALLOWED_HOSTS = ['*']
 
 JAZZMIN_SETTINGS = {"user_avatar":"photo"} 
 # for testing localhost added
+JAZZMIN_SETTINGS["usermenu_links"] = [{"name":"the site", "url":"https://exam-month-7.onrender.com/"}]
 if DEBUG:JAZZMIN_SETTINGS["usermenu_links"] = [{"name":"the site", "url":"http://127.0.0.1:8000"}]
 
 INSTALLED_APPS = [

@@ -35,12 +35,12 @@ urlpatterns = [
 
 
 # temporary! to add some requirements and faq
-from api_requirements.views import temp
-from faq.views import show_faq, tempp
-urlpatterns += [
-    path('temp/faq/create/', tempp),
-    path('temp/requirements/create/', temp),
-]
-from django.conf import settings
-from django.conf.urls.static import static
-if settings.DEBUG:urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+#from api_requirements.views import temp
+#from faq.views import show_faq, tempp
+# urlpatterns += [
+#   path('temp/faq/create/', tempp),
+#    path('temp/requirements/create/', temp),
+#]
+#from django.conf import settings
+#from django.conf.urls.static import static
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
