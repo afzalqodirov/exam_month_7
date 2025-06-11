@@ -21,10 +21,10 @@ urlpatterns = [
     path('token/', TokenObtainPairView.as_view()),
     path('token/refresh/', TokenRefreshView.as_view()),
     path('accounts/', include('accounts.urls')),
-    path('api/requirements/', include('api_requirements.urls')),
-    path('api/papers/', include('api_papers.urls')),
-    path('api/faq/', show_faq),
-    path('api/messages/', send_message),
+    path('requirements/', include('api_requirements.urls')),
+    path('papers/', include('api_papers.urls')),
+    path('faq/', show_faq),
+    path('messages/', send_message),
     path('', schema.with_ui('swagger')),
     ]
 
@@ -33,8 +33,8 @@ urlpatterns = [
 from api_requirements.views import temp
 from faq.views import show_faq, tempp
 urlpatterns += [
-    path('api/faq/create/', tempp),
-    path('api/requirements/create/', temp),
+    path('temp/faq/create/', tempp),
+    path('temp/requirements/create/', temp),
 ]
 from django.conf import settings
 from django.conf.urls.static import static

@@ -37,7 +37,8 @@ class CustomUserSerializer(ModelSerializer):
                 photo = validated_data.get('photo'))
         return user
 
-    #experimental! don't touch it
+#experimental! don't touch it
+class ShowProfile(CustomUserSerializer):
     def get_fields(self):
         fields = super().get_fields()
         fields.pop('password')
