@@ -15,6 +15,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from faq.views import show_faq
 from accounts.views import accounts_register
 from api_messages.views import send_message
+from .views import get_main
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,6 +26,10 @@ urlpatterns = [
     path('papers/', include('api_papers.urls')),
     path('faq/', show_faq),
     path('messages/', send_message),
+    path('journals/', include('api_journals.urls')),
+    path('api/uz/main/', get_main),
+    path('api/ru/main/', get_main),
+    path('api/en/main/', get_main),
     path('', schema.with_ui('swagger')),
     ]
 

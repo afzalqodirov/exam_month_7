@@ -12,7 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-zboc_b-hcmm-h)o5@d6mm67m@021wku$c6f8^3cna@42o4ae*y'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'accounts',
     'api_messages',
     'api_papers',
+    'api_journals',
 ]
 
 # CORS SETTINGS -------
